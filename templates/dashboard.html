@@ -1,0 +1,173 @@
+{% extends "admin.html" %} {% block dashboard %}
+<div>
+    <table>
+        <tr>
+            <form method="get" action="/admin">
+                <b>Welcome abc, </b><button style='float: right; width: 200px' type="submit" name="vis" value="logout" class="btn-primary">Logout</button>
+            </form>
+        </tr>
+
+        <br>
+        <br>
+        <tr>
+            <td>
+                <img src="static/img/poll.jpg" class="container" width="350px" height="250px" />
+                <button onclick="document.getElementById('id01').style.display='block'" class="btn-primary">Create Poll</button>
+            </td>
+            <td>
+                <img src="static/img/ballot.jpg" class="container" width="350px" height="250px" />
+                <button onclick="document.getElementById('id02').style.display='block'" class="btn-primary">View Candidates</button>
+            </td>
+            <td>
+                <img src="static/img/voter.jpg" class="container" width="350px" height="250px" />
+                <button onclick="document.getElementById('id03').style.display='block'" class="btn-primary">View voters</button>
+            </td>
+            <td>
+                <img src="static/img/results.png" class="container" width="350px" height="250px" />
+                <button onclick="document.getElementById('id04').style.display='block'" class="btn-primary">Results</button>
+            </td>
+        </tr>
+        <tr>
+
+        </tr>
+    </table>
+
+    <div id="id01" class="modal">
+        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+        <form class="modal-content" method="post">
+            <div class="container">
+                <h1>Create Poll</h1>
+                <hr>
+                <label for="poll"><b>Poll Title</b></label>
+                <input type="text" placeholder="..." name="poll" required>
+                <br>
+                <label for="vis"><b>Visibility</b></label>
+                <select name="vis" id="vis">
+                    <option value="all">All</option>
+                    <option value="state">State</option>
+                    <option value="cnst">Constituency</option>
+                  </select>
+                <br>
+
+                <label for="datefrom"><b>Duration</b></label>
+                <input type="date" name="datefrom"> to <input type="date" name="datetill">
+
+                <div class="clearfix">
+                    <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                    <button type="submit">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div id="id02" class="modal">
+        <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+        <form class="modal-content" method="post" action="/show">
+            <h3>Candidate List</h3>
+            <hr>
+            <label for="pollno"><b> Select Poll </b></label>
+            <select name="pollno">
+
+                    <option value="none">None</option>
+                    {% for i in polls %}
+                    <option value="pollno">{{i}}</option>
+                    {% endfor %}
+                  </select>
+            <br>
+            <div class="clearfix">
+
+                <button type="submit" name="vis" value="logout">Submit</button>
+
+            </div>
+        </form>
+    </div>
+
+    <div id="id03" class="modal">
+        <span onclick="document.getElementById('id03').style.display='none'" class="close" title="Close Modal">&times;</span>
+        <form class="modal-content animate" action="/action_page.php" method="post">
+            <h3>Voter List</h3>
+            <hr>
+            <div class="container">
+
+                {% for i in range(0,x) %}
+                <ol>
+                    <li>Name: {{keys[i][0]}}<br>Address: {{keys[i][1:y-2]}}
+                        <br>{{keys[i][y-2]}}: {{keys[i][y-1]}}
+                        <div class="container" style="background-color:#f1f1f1">
+                            <button type="button" onclick="document.getElementById('id02').style.display='none'" class="reviewbtn">Verify Document</button>
+                            <button type="button" onclick="document.getElementById('id02').style.display='none'" class="approvebtn">Approve</button>
+                            <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Remove</button>
+                        </div>
+                        <hr>
+                    </li>
+                </ol>
+                {% endfor %}
+
+            </div>
+
+
+        </form>
+    </div>
+
+    <div id="id04" class="modal">
+        <span onclick="document.getElementById('id04').style.display='none'" class="close" title="Close Modal">&times;</span>
+        <form class="modal-content" method="post" action="/results">
+            <h3>Results</h3>
+            <hr>
+            <label for="pollno"><b> Select Poll </b></label>
+            <select name="pollno">
+
+                    <option value="none">None</option>
+                    {% for i in polls %}
+                    <option value="pollno">{{i}}</option>
+                    {% endfor %}
+                  </select>
+            <br>
+            <div class="clearfix">
+
+                <button type="submit" name="vis" value="logout">Submit</button>
+
+            </div>
+        </form>
+    </div>
+
+
+
+</div>
+<script>
+    // Get the modal
+    var modal = document.getElementById('id01');
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+    var modal2 = document.getElementById('id02');
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal2) {
+            modal2.style.display = "none";
+        }
+    }
+    var modal2 = document.getElementById('id03');
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal2) {
+            modal2.style.display = "none";
+
+        }
+    }
+    var modal2 = document.getElementById('id04');
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal2) {
+            modal2.style.display = "none";
+        }
+    }
+</script>
+{% endblock %}

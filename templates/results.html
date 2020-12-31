@@ -1,0 +1,12 @@
+{% extends "admin.html" %} {% block results %}
+<h3>Results</h3>
+<div>
+
+    <hr>
+    <ol>{% for i in range(0,x) %}
+        <li>Name:{{cans[i]}} <br>Party: {{cansp[i]}}</li>
+        <br> Votes: {{res[i]}}
+        <br>
+        <br>{% endfor %}</ol>
+    <br>
+</div> {% endblock %}

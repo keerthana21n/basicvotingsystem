@@ -1,0 +1,43 @@
+{% extends "voterdashboard.html" %} {% block filen %}
+<div>
+    <form method="post">
+        <div class="row">
+            <div class="col-75">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-50">
+                            <h3>File Nomination</h3>
+                            <label for="fname"><i class="fa fa-user"></i>Name:</label>
+                            <input type="text" name="firstname" placeholder="..." required>
+                            <br>
+                            <label for="fname"><i class="fa fa-user"></i>Party Affliated:</label>
+                            <input type="text" name="party" placeholder="..." required>
+                            <br>
+                            <label for="symbol"><i class="fa fa-institution"></i>ID Upload</label>
+                            <input type="file" id="city" name="symbol" placeholder="New York">
+                            <br>
+
+                            <label for="idtype">ID Type</label>
+                            <select name="idtype">
+                                    <option value="all">Adhaar</option>
+                                    <option value="state">DL</option>
+                                    <option value="cnst">Pan Card</option>
+                                </select>
+                            <br>
+                            <label for="idupload"><i class="fa fa-institution"></i>ID Upload</label>
+                            <input type="file" id="city" name="idupload" placeholder="New York">
+                            <br>
+                        </div>
+                        <div class="clearfix">
+                            <button type="submit">File Nomination</button>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends "base.html" %} {% block admin %}
+<div>
+
+    {% if x == '0' or x =='1' %} {% if x =='1'%} Unauthorized login. {% endif %}
+    <br>
+    <div class="container"><img src="static/img/ballot.jpg" class="container" width="700px" height="500px" />
+        <br>
+        <button onclick="document.getElementById('id01').style.display='block'" style="width:700px;" class="btn-primary" type="submit" name="auth" value="admin">Login as Admin</button>
+    </div>
+    <div id="id01" class="modal">
+        <form class="modal-content animate" method="post">
+            <div class="imgcontainer">
+                <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+                <img src="static/img/avatar.jpeg" alt="Avatar" class="avatar" />
+            </div>
+
+            <div class="container">
+                <label for="uname"><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" name="uname" required>
+                <br>
+                <label for="psw"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="psw" required>
+
+                <button type="submit" class="btn-primary">Login</button>
+                <label>
+            <input type="checkbox" checked="checked" name="remember"> Remember me
+          </label>
+            </div>
+
+
+        </form>
+    </div>
+    {% endif %} {% block dashboard %} {% endblock %}{% block show %} {% endblock %}{% block results %} {% endblock %}
+    <script>
+        // Get the modal
+        var modal = document.getElementById('id01');
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "base.html" %} {% block vote %}
+<h3>Anynomous Vote for poll1: </h3>
+
+<form method="post">
+    <label for="can"><b>Candidates List</b></label>
+    <br>
+    <hr> {% for i in range(0,x) %}
+    <input type="radio" id="male" name="voted" value={{i}}>
+    <label for="vote">Name:{{cans[i]}} <br>Party: {{cansp[i]}}</label><br>
+    <br>{% endfor %}
+    <br>
+    <button type="submit">Vote</button>
+</form> {% endblock %}
